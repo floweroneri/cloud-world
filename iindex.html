@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Scrolling Effect</title>
+    <style>
+        @font-face {
+            font-family: "PyonggyunRRad" ;
+            src: url(PyonggyunRRad.otf) format('opentype');
+            
+        }
+        .scroll-container {
+            position: relative;
+            perspective: 1000px;
+            height: 100vh;
+            overflow-y: scroll;
+            /* background: #f5f5f5; */
+            display: flex;
+        }
+        .scroll-text {
+            font-family: "PyonggyunRRad" ;
+            font-size: 50px;
+            line-height: 2.0;
+            width: 95%;
+            color: #333;
+            text-align: left;
+            word-break: keep-all;
+            /* border: 1px solid black; */
+        }
+
+        p::selection {
+            background-color: white;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <p class="scroll-text">
+            더 많은 음악, <br>하고 목소리는 말했다. 그 목소리는 비와 구름으로 무겁게 덮인 하늘 아래 온 세상을 지배했다. 
+            빗물을 가득 머금은 공기가 열린 차창으로 들어와 M의 오른편 머리카락과 뺨에 맺혀 흘러내렸다. M과 나는 비가 들판에 떨어지는 소리를 듣기를 원했다. 
+            빗물은 M의 희고 윤기 없이 창백한 이마를 지나 감기를 앓은 다음이라 더욱 움푹 들어간 눈두덩과 끝이 약간 아래쪽을 향한 코를 따라 흘러내렸다. 
+            마지막 순간에 M이 고개를 들자 그것은 믿을 수 없을 만큼 엷고 섬세하며, 미소 짓고 있지 않을 때라도 양옆으로 충분히 길고, 아침의 태양빛이 
+            스며든 듯 밝고 붉은 입술로 떨어졌다. 섬세하고 완만하게 두드러진 골격의 광대뼈, 학교에 다닐 무렵 핀족 혹은 에스키모인의 광대뼈, 
+            라고 놀림을 받았다고 하는 그것 바로 아래의 피부가 경련하듯 순간적으로 떨리는 것을 아주 가까이서 볼 수 있었다. 들판 저 먼 곳에서 번개가 둔하게 번쩍였다. 
+            책과 언어가 M에게 절대적인 세상의 징표였다면, 음악은 접근할 수 없는 정신이자 종교이고 영혼 그 자체였다. 우리는 조용히 비에 젖은 나지막한 언덕을 내려가고 있었다. 
+            언덕 양옆으로는 베어넨 들판이었다. 검고 어두운 숲의 한 귀퉁이가 들판 저 너머에 웅크리고 있었으나, 그것이 실제로 존재하는 것인지 아니면 단지 비에 젖은 구름이 지상에 드리운 
+            그림자일 뿐인지 알 수 없었다. 오전에 나는 서류상의 사소한 문제가 있어서 관청에 들렀다. 그전에 M은 잠깐 여행을 해도 좋을지 의사의 허락을 받으러 갔다. M의 숙모는 이 주일 전 
+            죽기 전까지는 시 외곽에 살고 있었고 M과 나는 그녀의 물건을 가지러 가기로 되어 있었다. 쇼스타코비치를 들을 때 M은 말을 하지 않았다. 더 많은 음악, 하고 라디오의 목소리는 말했다.
+            언제나 같은 시간에 라디오에서 들리는 그 녹음된 목소리가 실상은 시간을 거슬러가는 하늘의 별빛처럼 언제 왔다가 언제 사라져가는 것인지 우리는 모른다. 우리는 단지 들을 수 있을 뿐이며,
+            그것은 존재의 절댓값과 언제나 일치하는 것은 아니었다. 그러나 음악이 없다면, 존재가 도대체 무슨 의미가 있단 말인가. 더 많은 음악, 그것은 인격체라기보다는 단지 목소리라고 불리는 
+            것이 더 정직한 존재이다. 나는 라디오에서 나오는 그 말을 들을 때 한 번도 ‘그’가 말하고 있다고 생각해본 적은 없다. 더, 더 많은 음악, 하고 그 목소리는 말했다. 보통 수량을 
+            나타내는 많다, 라는 표현은 이 경우에 적절한 것이 아니다. 더 아름답다 혹은 더 슬프다, 더 멀다, 더 죽어 있다, 더 혼자 있다, 라고 표현할 때처럼 그 목소리는 말했다. 더 ……한 음악.
+            더 죽어 있다, 라고 우리는 아무도 말하지 않는다. 그것은 비교할 수 없는 절대적인 가치이기 때문이다. 손바닥을 뒤집듯이 단지 둘 중의 하나만을 가질 수  있는 문제이다. 음악은 절대적인 
+            것이고 죽음도 마찬가지다. 더 많은 죽음이나 덜한 죽음이 존재하지 않듯이 음악도 마찬가지다. 그것은 영혼의 등가에 해당되는 것이기 때문이다. 음악에 대해서는, 베토벤의 바이올린 협주곡을 
+            두 곡을 듣는 것과 세 곡을 듣는 것을 더 적다, 와 더 많다, 라고 단순하게 비교할 수는 없다. 마찬가지로 한 가지의 베토벤 바이올린 협주곡을 세 번 반복해서 듣는 것과 서로 다른 것 
+            세 곡을 연속해서 듣는 것에 대해서 어느 것이 더 많고 어느 것이 더 적은지 판단할 수도 없는 것이다. 단지 리스트를 작성하려는 것이 아니라 음악을 듣기를 원할 때의 문법으로 
+            ‘더 많은 음악’이라는 표현이 가능한 것일가. 더욱더 음악적인 어떠한 것이나 (현재 음악을 듣고 있음에도 불구하고) 음악에 대해서 느끼는 더욱 깊은 갈증이나 단지 음악, 
+            이라고 표현되는 단어가 내포하고 연상시키는 모든 의미들의 더한 증폭이나 명확히 경계 짓지 못하는 저 먼 지평선의 영역의 모호함까지도 포괄하는 것일까. 더 많은 음악.
+            그 말은 어디서 온 것일까. 그 목소리에서 두 개의 베토벤 협주곡과 세 개의 협주곡의 차이를 연상해본 적은 한 번도 없었다. 일반적인 생각대로라면 음악을 내게 더 많이,
+            라고 말하는 편이 적절할지도 몰랐다. 더 많은 죽음이거나 더 많은 알몸(나체의 개체수를 나타내는 것이 아닌), 더 많은(단 한명인) 최초의 인간, 더 많은 우주, 더 많은 음악의 영혼, 
+            더 많은 유일한 것, 더 많은 더 멀리 그쪽으로, 더 많은 멘델스존, 더 많은 M, 그리고 더 많은 그 겨울.
+        </p>
+    </div>
+
+    <!-- <script>
+        const scrollContainer = document.querySelector('.scroll-container');
+        const scrollText = document.querySelector('.scroll-text');
+
+        scrollContainer.addEventListener('scroll', () => {
+            const scrollTop = scrollContainer.scrollTop;
+            const maxScroll = scrollContainer.scrollHeight - scrollContainer.offsetHeight;
+            const progress = scrollTop / maxScroll;
+
+            const translateZ = -100 + progress * 400;
+            const opacity = Math.max(0, 1 - progress * 0.3);
+            const scale = 1 + progress * 0.1;
+
+            scrollText.style.transform = `translate(-30%, -30%) translateZ(${translateZ}px) scale(${scale})`;
+            scrollText.style.opacity = opacity;
+        });
+    </script> -->
+</body>
+</html>

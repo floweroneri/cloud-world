@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Search with Iframe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color:#a1dcff;
+            opacity: 0.8;
+            font-family: 'Times New Roman', Times, serif;
+            color: #ff4117;
+        }
+        #searchBox {
+            width: auto;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            height: 20px;
+            background-color:#a1dcff;
+            border-radius: 5px;
+            border: 0.5px solid #ff4117;
+            color: #ff4117;
+            font-family: 'Times New Roman', Times, serif;
+            overflow-y: none;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+            }
+        #searchResults {
+            width: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            color: #ff4117;
+        }
+        .result {
+            cursor: pointer;
+            color: #ff4117;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        a {
+            display: inline-block;
+            color: #ff4117;
+            text-decoration: none;
+            padding-bottom: 10px;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchBox" placeholder="Search Your Cloud!" >
+    <div id="searchResults"></div>
+<script>
+           const data = {
+                name: "Clouds of Soundcloud",
+                url: "https://on.soundcloud.com/aWXaA4hhEiqBNsP49",
+                children :[
+                {
+                    name:"- 헬멧을 꼭 써라 -", url:"https://on.soundcloud.com/NeDSFMfaT1kerUM89",
+                    children: [
+                        { name:"Paradise", url:"https://youtu.be/Mr5R0iZ2IR8?si=I7i86N1wVjsPh5eK"},
+                        { name:"Autometic",url:"https://youtu.be/-9DxpPiE458?si=8e_kHF1jHSI6Mivq",
+                            children: [{ name:"Time will tell",url:"https://youtu.be/Xm5cxq23mQk?si=fTbsgJq6L-nX-OXM"},]
+                        },
+                        { name:"Souls",url:"https://youtu.be/UdWWXIIDMg0?si=jnhd7mprVYrWGWLE"},
+                        { name:"Yearning for Your Love", url:"https://youtu.be/k_r2zuNl0tI?si=HTz9q-U2TxjPaVsN"},
+                        { name:"luv", url:"https://youtu.be/Y4HWvsGs0rY?si=u15mb9PFTC7lwLIU"},
+                        { name:"Following teoteo.", url:"https://on.soundcloud.com/xraCYTvu72FhofU56",
+                            children: [{ name: "- 편집샵 -", url:"https://on.soundcloud.com/HuxT45mJcvuSp5o8A",
+                                children:[
+                                    { name:"dear P", url:"https://youtu.be/Er4OCqPXZNw?si=9Q3q7ZIS_pmvBdXG" },
+                                    { name:"This Time Around", url:"https://youtu.be/q5ozd7OjclE?si=sqjoky2FpjcRYJV4",
+                                        children: [ { name:"Knowing Jonah Yanoh", url:"",
+                                                children: [{ name:"<souvenir>", url:"https://youtube.com/playlist?list=OLAK5uy_k4GOhDPYKa4mqLQDSJS-8IFjiqUF_45Es&si=1iYtcloxWJ_7jCC9"}]}]
+                                    }
+                                ]
+                            },
+                            { name:"- Jazz kissa -", url:"https://on.soundcloud.com/Y1NVdaU5E2tbng6K7",
+                                children:[
+                                    { name:"The Last Waltz", url:"https://youtu.be/_DxjFs_dsR8?si=OqVH_-0TJFG5uAvz" },
+                                    { name:"Between the Bar", url:"https://youtu.be/8aomt1gQ6So?si=SXAb0R1D_1gE1x8_" },
+                                    { name:"Tres Palabras", url:"https://youtu.be/c9WVzvP7pU8?si=toHy0I8so-veGigZ",
+                                        children: [
+                                            { name:"<Huracan>", url:"https://youtube.com/playlist?list=OLAK5uy_nTmLEfvFeD9NJezlif5mU8JOGFzck2wlg&si=fnNSgR1Gs1sPSIy2",
+                                                children:[
+                                                    { name:"Desposado", url:"https://youtu.be/VPe-xTeAa3M?si=l5QX1vDGpq_Xihbe"}]}]
+                                    },
+                                    {
+                                        name:"9月の想い",
+                                        url:"https://youtu.be/U702eClOSiM?si=0epvtylZDPONMgv2",
+                                        children: [
+                                            {
+                                                name:"Fall in Bird",
+                                                url:"",
+                                                children : [
+                                                {
+                                                    name:"4PM",
+                                                    url:"https://youtu.be/lo0jds_9A14?si=_PEzwP7rnTIL5PXM"
+                                                },
+                                                {
+                                                    name:"Futarino Yoake",
+                                                    url:"https://youtu.be/y6PibCTwYh4?si=hAKw1MlSA04LHtTv"
+                                                },                                                
+                                                {
+                                                    name:"late summer breeze",
+                                                    url:"https://youtu.be/4GlpVcbaaao?si=zIApSPmDHFfOMQPS"
+                                                },                                                
+                                                {
+                                                    name:"AreKara",
+                                                    url:"https://youtu.be/c4fxx2WH5Bc?si=tDTnaaignjM7kUih"
+                                                }
+                                                ]
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        name:"Caribe",
+                                        url:"https://youtu.be/LH6sjCOn1s0?si=iDQ5rv-ooPx53Vcw",
+                                        children: [
+                                            {
+                                                name:"Rockanalia",
+                                                url:"https://youtu.be/rlGg-LeLe7M?si=K64GiDm8X5NTv_z2"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                name:"- 쓸만한 녀석들은 ... (중략) -",
+                                url:"https://on.soundcloud.com/JGbnjR7F817z6PwU7",
+                                children: [
+                                    {
+                                        name:"My Jinji(Live ver)",
+                                        url:"https://youtu.be/Kmp3xa3v62M?si=EZPDB5i5fH9dBmiy",
+                                        children:[
+                                            {
+                                                name:"Loving Sunsetrollercoaster",
+                                                url:"https://on.soundcloud.com/5oqqPhvGNGBY9Ruf7",
+                                                children: [
+                                                    {
+                                                        name:"<AAA>",
+                                                        url:"https://youtube.com/playlist?list=OLAK5uy_l6amjUJp9Eo7YmJReZLg6n3UfIL21sQ80&si=uPMJN1puOv3Ob6Y6"
+                                                    },
+                                                    {
+                                                        name:"<Soft Storm>",
+                                                        url:"https://youtu.be/ZPRXWqt6MSA?si=eiO2hfIHkCeyFh8K"
+                                                    },
+                                                    {
+                                                        name:"<CASSA NOVA>",
+                                                        url:"https://youtu.be/3BK2uqgzza0?si=11PRhCWxUATXMs18"
+                                                    },
+                                                    {
+                                                        name:"<BOSSA NOVA>",
+                                                        url:"https://youtube.com/playlist?list=OLAK5uy_k6ojpYsv0gHaKlGexJXe3T89rpZUG2oSc&si=A8zLJAVqsHP__LK1"
+                                                    },
+                                                    {
+                                                        name: "Single & EP",
+                                                        children:[
+                                                            {
+                                                                name:"Album",
+                                                                children:[
+                                                                    {
+                                                                        name:"<VANILLA VLLA>",
+                                                                        url:"https://youtu.be/gex2JGKDXIo?si=FBwJ0XC9xD9_2TJd"
+                                                                    },
+                                                                    {
+                                                                        name:"<S.R (Audiotree Live)>",
+                                                                        url:"https://youtu.be/slUc-4WCnhc?si=IT_YV0QWiIL-D7zb"
+                                                                    },
+                                                                    {
+                                                                        name:"<JINJI KIKKO>",
+                                                                        url:"https://youtu.be/d1REzQ75COs?si=NCMRW0epD-dq_UAA"
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                name:"Song",
+                                                                children:[
+                                                                {
+                                                                name:"Impossible Isle",
+                                                                url:"https://youtu.be/yqy5aQjFxOQ?si=uw0qT0AcqrodsbDP"
+                                                            },
+                                                            {
+                                                                name:"Jellyfish",
+                                                                url:"https://youtu.be/ReKq2ekMKLQ?si=H5M3Ps6hSCXkUplr"
+                                                            },
+                                                            {
+                                                                name:"Coffee's on Me",
+                                                                url:"https://youtu.be/vHIVzPtQbBk?si=TvHlPaX11LGRa4Q4"
+                                                            },
+                                                            {
+                                                                name:"我是一隻魚",
+                                                                url:"https://youtu.be/zPoId89NOM4?si=ESUgOn37p62PsrkI"
+                                                            },
+                                                            {
+                                                                name:"Little Balcony",
+                                                                url:"https://youtu.be/JPefMv2kecs?si=xR6LzfCB-m7H4_XX"
+                                                            },
+                                                            {
+                                                                name:"Let There Be Light Again",
+                                                                url:"https://youtu.be/03uDc9m4NcQ?si=coWsiiUv47vBlzSe"
+                                                            }
+                                                                ]
+                                                            },
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name:"16/04/16",
+                                        url:"https://youtu.be/c-eO8cW4usc?si=buSAyAk3cchbPvES"
+                                    },
+                                    {
+                                        name:"Think About'chu",                                        
+                                        url:"https://youtu.be/oLYAfaSzLC8?si=yp1rS4ehvLeHd0c5"
+                                    }
+                                ]
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name:"Positive Room TOVE #1",
+                    url:"",
+                    children :[
+                        {
+                            name:"Kokoku",
+                            url:"https://youtu.be/Stz49JxKGGY?si=sucJaqI-A8lUmUCh"
+                        },
+                        {
+                            name:"Rivers Turn to Waterfalls",
+                            url:"https://youtu.be/58pBZ5OpCs0?si=TDqC99GGOJLlLfWp",
+                            children:[
+                                {
+                                    name:"<Music for Turntable ...>",
+                                    url:"https://youtube.com/playlist?list=OLAK5uy_nk5Z7WQmLOupEqTO_7iYps3E8LPnVc3mw&si=2ZLlVe3I2sPBL1i5"
+                                }
+                            ]
+                        },
+                        {
+                            name:"Hakko Suru Zero",
+                            url:"https://youtu.be/jjYQjoTH1bc?si=vm6uXGk4Ps1z5SOg",
+                            children:[
+                                {
+                                    name:"<Moment>",
+                                    url:"https://youtube.com/playlist?list=OLAK5uy_nw8LGp5DHU1ca6q2R7fiF48ZN1SzKaCIw&si=FzOucn8GR0hSoJ28"
+                                }
+                            ]
+                        },
+                        {
+                            name:"Umi No Ue Kara",
+                            url:"https://youtu.be/_JbuCkHwJEY?si=inKNzTfFLB9yddhw"
+                        },
+                        {
+                            name:"Balance",
+                            url:"https://youtu.be/7TRfqXUKN1A?si=E6GPmB1IRAbfg_aN"
+                        },
+                        {
+                            name:"Following Odd J",
+                            url:""
+                        },
+                        {
+                            name:"Positive Room TOVE #2",
+                            url:"https://on.soundcloud.com/8rE8QV3Scab24AN89",
+                            children :[
+                                {
+                                    name:"Ascenseur tropical",
+                                    url:"https://youtu.be/iEP0oD-k6DQ?si=ah6-D6rRHUNz0JW_"
+                                },
+                                {
+                                    name:"She Wants(more)",
+                                    url:"https://youtu.be/765KjAD4saQ?si=YAeKAdVSgE99O0nW"
+                                },
+                                {
+                                    name:"C'est la ouaste",
+                                    url:"https://youtu.be/01jK2yQg-0w?si=sqds--Bx7H1EMKfs"
+                                },
+                                {
+                                    name:"Fora De Mim",
+                                    url:"https://youtu.be/4Rfw5p8_Y-0?si=5qR5t1JahwHqA7Bs"
+                                },
+                                {
+                                    name:"Collège infernal",
+                                    url:"https://youtu.be/W1GNSYsdV8g?si=yzIOflhduRduFkxl"
+                                },
+                                {
+                                    name:"Following JOE",
+                                    url:"https://on.soundcloud.com/3hegPeUsaA2SAK9u5",
+                                    children :[
+                                        {
+                                            name:" - GOOD VIBES ... -",
+                                            url:"https://on.soundcloud.com/NPDorLSMVsTCSR1r7",
+                                            children: [
+                                                {
+                                                    name:"Storm",
+                                                    url:"https://youtu.be/AQZESJ2Pga8?si=nQjMJMtEaDh0vbTR"
+                                                },
+                                                {
+                                                    name:"Oasis(Erotikk Mix)",
+                                                    url:"https://youtu.be/NdtC60IUNE4?si=lWf_WuY5roFTY8pu"
+                                                },
+                                                {
+                                                    name:"Things You Do For Love",
+                                                    url:"https://youtu.be/RzYtIykAu5M?si=1wXgdXNHOPz0XMEq"
+                                                },
+                                                {
+                                                    name:"過氣晚裝",
+                                                    url:"https://youtu.be/uKx6lw0GoQU?si=azt_b2WxArmMaL0k"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            name:"Cologne Indélébile",
+                                            url:"https://on.soundcloud.com/GQPR9A4rfLJyP3ky6",
+                                            children:[
+                                                {
+                                                    name:"A Touch Of Temtation",
+                                                    url:"https://youtu.be/kHjlyQW29fo?si=tggEs6m-WdyS5AYq"
+                                                },
+                                                {
+                                                    name:"True Love",
+                                                    url:"https://youtu.be/lbbdbz1oThQ?si=Evcb1cSQXHBF2fjI"
+                                                },                                                
+                                                {
+                                                    name:"Hawaiian Electric",
+                                                    url:"https://youtu.be/jhMJ4xGJvUs?si=BgYM-g47X1ol_oc9"
+                                                },
+                                                {
+                                                    name:"T.V.Scene",
+                                                    url:"https://www.youtube.com/watch?v=19VtcxCsFw8"
+                                                },
+                                                {
+                                                    name:"Fora De Mim",
+                                                    url:"https://youtu.be/4Rfw5p8_Y-0?si=LZFx_uzOrAWNMU4n"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                            ]
+                        }
+
+
+                    ]
+                },
+                {
+                    name: "Live at Studio Namsan",
+                    url: "https://on.soundcloud.com/aWXaA4hhEiqBNsP49",
+                    children: [
+                    { 
+                        name: "Following Sucowania ",
+                        url: "https://www.instagram.com/sucowania",
+                        children: [
+                            {
+                                name : "- Live At Kockri -",
+                                url:"https://on.soundcloud.com/kzGVuoCHicAukRGs7",
+                                children: [
+                                    {
+                                        name:"Optimistic",
+                                        url:"https://youtu.be/xGHPE3-VnW0?si=LG-6nbmBN_hFjpO1",
+                                        children: [
+                                            {
+                                                name:"<Lifetracks>",
+                                                url:"https://youtube.com/playlist?list=OLAK5uy_nIdvBTme7419Bm772tVTyd06Tztv0hXSk&si=Dx55U6IHUKbDtVb9",
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name:"Head Right",
+                                        url:"https://youtu.be/YRLz5jeN-pg?si=eYIeEXAB2jaJX55H",
+                                        
+                                    },
+                                    {
+                                        name:"Il volo",
+                                        url:"https://youtu.be/CtAsw1pXWBw?si=uXn62J_sGXJ0wHQP",
+                                        children: [
+                                            {
+                                                name:"<Il volo / Suono>",
+                                                url:"https://youtube.com/playlist?list=OLAK5uy_n_lzPObcwzQR-CrPavLkKudihJ4u-Ale8&si=cv6W6BmrxFXdgeEu",
+                                            },
+                                            {
+                                                name:"Fall into funk",
+                                                url:"https://youtu.be/4Rfw5p8_Y-0?si=5qR5t1JahwHqA7Bs",
+                                            },
+                                        ]
+                                    },
+                                    {
+                                    name:"Fora De Mim",
+                                    url:"https://youtu.be/4Rfw5p8_Y-0?si=LZFx_uzOrAWNMU4n"
+                                    },
+                                    {
+                                    name:"Dazzle You",
+                                    url:"https://youtu.be/Y3kMUKNzxdc?si=tp_R6Fa4HzOPxGMo"
+                                    },
+                                    {
+                                    name:"Plus Vite",
+                                    url:"https://youtu.be/xDSQ68usoyU?si=l3rzaNOd4DXsFNlR",
+                                    children: [
+                                        {
+                                            name:"<Détends-Toi>",
+                                            url:"https://youtube.com/playlist?list=OLAK5uy_l5RImA4hgZNjRAQks6Rtz1hqxQZ0cho8I&si=JXJQvtWJCcEqiKOO",
+                                            children:[
+                                                {
+                                                 name:"Sentimentale",
+                                                 url:"https://youtu.be/Gb9J01eE2mo?si=JpEQrtF7VokZbrBy"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                    },
+                                    {
+                                    name:"Artisan du cœur",
+                                    url:"https://youtu.be/arsZLupdFTg?si=lPIRPgpmbwCQw1dM"
+                                    }
+
+                                ]
+                            },
+                            {
+                                name :"- Live At Kockiri -",
+                                url: "https://on.soundcloud.com/4EjqtkjvmiScFXXd6",
+                                children: [
+                                    {
+                                        name:"Chasin' the Rain",
+                                        url:"https://youtu.be/lm2bQ4UHLRA?si=t5SLeTf-8Cma2xmR"
+                                    },
+                                    {
+                                        name:"Ani Kuni",
+                                        url:"https://youtu.be/ywQK34qOHes?si=v8I8UGr3y5AdEZ9c",
+                                    }
+                                ]
+
+                            },
+                            {
+                                name : "Live at Studio Namsan",
+                                url: "https://on.soundcloud.com/1HWCjF1oZt7DH5uU9",
+                                children: [
+                                    {
+                                        name:"Following youknowsong",
+                                        url:"https://on.soundcloud.com/vu3QVRwVEUrQRZqp7",
+                                        children : [
+                                            {
+                                                name:"- Youknowsong - 26th ... - ",
+                                                url:"https://on.soundcloud.com/GcedoSSBs5FRrhFN9",
+                                                children:[
+                                                    {
+                                                        name:"What Is the Time,Mr. Templer? ",
+                                                        url:"https://youtu.be/_ApcKmgSeS4?si=GaxHSSe1AiS6Z7uL"
+                                                    },
+                                                    {
+                                                        name:"Stand Up",
+                                                        url:"https://youtu.be/BR2FFFnofI8?si=PqfBlURHcXWEkua-"
+                                                    },
+                                                    {
+                                                        name:"Ghetto Face Place Space",
+                                                        url:"https://youtu.be/imLA6iaoEm8?si=UsoT4H48SjBK6ja7"
+                                                    }
+                                                ]
+                                        
+                                            },
+                                            {
+                                                name:"- 2022 - 04 - 08 ... - ",
+                                                url:"https://on.soundcloud.com/AzscbHyAkD94WvRY7"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name:"プロローグ",
+                                        url:"https://youtu.be/QjPP0kCfSZU?si=RNHpdXAk_2touFCl"
+                                    },
+                                    {
+                                        name:"Dirty Dirty",
+                                        url:"https://youtu.be/_wtkwwstd_w?si=6pqVhdhIeeX9PNXj",
+                                        children: [
+                                            {
+                                                name:"Fall again Electric Music",
+                                                url:"",
+                                                children: [
+                                                    {
+                                                        name:"Fall again House",
+                                                        url:"",
+                                                        children :[
+                                                            {
+                                                                name:"I Bought This🔥🔥🔥",
+                                                                url:"image_book.html"
+
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:"Fall again Techno",
+                                                        url:"",
+                                                        children: [
+                                                            {
+                                                                name:"Recommended Dj Hell",
+                                                                url:"https://on.soundcloud.com/p5dow4m9TDvBHeDNA",
+                                                                children : [
+                                                                    {
+                                                                        name:"Bassiani invites Dj Hell #240",
+                                                                        url:"https://on.soundcloud.com/9KnV4XWkUXpSNCwA8",
+                                                                        children: [
+                                                                            {
+                                                                                name:"Alignment",
+                                                                                url:"https://youtu.be/frrK4u6fKPE?si=X51QYWPvmHm5cxQp"
+                                                                            }
+                                                                        ]
+
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                name:"Visited Vurt Seoul",
+                                                                url:"https://on.soundcloud.com/D2mMwBtGKe7H6DtUA",
+                                                                children: [
+                                                                    {
+                                                                        name:"Following Knaif",
+                                                                        url:"https://on.soundcloud.com/5qkFbUdLur981Khk8",
+                                                                        children: [
+                                                                            {
+                                                                                name:"Following Yotam Avni",
+                                                                                url:"https://on.soundcloud.com/m9F817nYXqJCTDuR7",
+                                                                                children:[
+                                                                                    {
+                                                                                        name:"Tehilim",
+                                                                                        url:"https://youtu.be/0LDQvFsrWZk?si=l_SDJ3bWIQhJUGlP",
+                                                                                        children: [
+                                                                                            {
+                                                                                                name:"<Tehiliem-EP>",
+                                                                                                url:"https://youtube.com/playlist?list=OLAK5uy_napxwWLZLTdDtQZ2NT_xkfbVEMha8ifHk&si=4z471dqKUcMSqlXX"
+                                                                                            },
+                                                                                            {
+                                                                                                name:"<Nylon Trax>",
+                                                                                                url:"https://youtube.com/playlist?list=OLAK5uy_k15KxHCcTcxGCtO9KiemyoX3LXCJfG67o&si=sfTnt00tJWZV-Yae"
+                                                                                            }
+                                                                                        ]
+                                                                                        
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        name:"Thanks to Hyemin♡",
+                                                                        url:"https://on.soundcloud.com/JyMjDTN4vCW3M5AE8"
+                                                                    }
+                                                                    ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        name:"Coffee cold",
+                        url: "https://youtu.be/1Oe06936C0c?si=KiMC7CeUDQ4NRzmT",
+                    },
+                    {
+                        name:"Ain't No sunshine",
+                        url: "https://youtu.be/E15Nqxm4JQ4?si=ohbDDaecuWYZlDI7",
+                    },
+                    {
+                        name:"Down By The River",
+                        url:"https://youtu.be/XVUd9doitsY?si=ruBa4njU4qC2vlSC",
+                    },
+                    {
+                        name:"Clues(Part II)",
+                        url: "https://youtu.be/6a73lTJO8e4?si=htfLMyjpJpbK4me0",
+                    },
+                    {
+                        name:"Chicago",
+                        url: "https://youtu.be/yg8vWjZh01g?si=rIENCDc7WTsz1whN",
+                    },
+                    {
+                        name: "Chula",
+                        url: "https://on.soundcloud.com/SxjymPrQ3Y9oeiMm7",
+                        children: [
+                            {                                          
+                                name: "Following Soos",
+                                 url: "https://www.instagram.com/soosisoos",
+                                children : [
+                                    {
+                                        name:"<Mundo Cute>",
+                                        url:"https://music.apple.com/kr/album/mundo-cute/1695538943",
+                                        
+                                    },
+                                    { 
+                                        name: "06-21-2024",
+                                        url: "https://youtu.be/4SiKWHYaH7w?si=Q22FGDLPP0lUjagG",
+                                        children : [
+                                            {
+                                                name: "Where Were U In 92?",
+                                                url:"https://youtu.be/ZL61jtpOhzE?si=McGqOIwZ3kIit6rQ",
+                                            },
+                                            {
+                                                name: "Shadows",
+                                                url:"https://youtu.be/82wGVM-p10c?si=J5FoLqt9FGfXG95l",
+                                            },
+                                            {
+                                                name: "Qualified",
+                                                url:"https://youtu.be/_TOjj9NcOhY?si=5oHSkrCmB1E7o4O_",
+                                            }
+
+                                        ]
+                                    },
+                                ]
+                            },
+                        ]   
+                    },
+                    {
+                        name:"TREE,AIR,AND RAIN ON THE EARTH",
+                        url:"https://youtu.be/oreizVv2KlU?si=yb7Ppyj8V1HSHPlB",
+                        children: [
+                            {
+                                name:"Knowing Mondo Grosso",
+                                url:"",
+                                children:[
+                                    {
+                                        name:"Bird was featured!"
+                                    }
+                                ]
+                            }
+                        ]
+                        
+                    },
+                    {
+                        name:"Let me Trouble",
+                        url:"https://www.youtube.com/watch?v=2J_aJA8vpBg",
+                    
+                    },
+                    {
+                        name:"Exosphere (Oceanaia Mix)",
+                        url:"https://youtu.be/sCxy74mF_w8?si=aGUCNFnk4X-jyr9f",
+                    },
+                    {
+                        name:"Stop",
+                        url:"https://youtu.be/s1qYseF20hI?si=hUnOK2DmOXmKdQAq"
+                    }
+                ]
+            
+            }
+        ]};
+
+// 검색 기능 구현
+document.getElementById('searchBox').addEventListener('input', function(event) {
+    const query = event.target.value.toLowerCase(); // 검색어를 소문자로 변환
+    const results = [];
+
+    if (query === "") {
+        // 검색어가 비어있으면 결과를 초기화하고 리턴
+        document.getElementById('searchResults').innerHTML = "";
+        return;
+    }
+    
+    // 데이터를 순회하며 검색어와 일치하는 name들을 찾기
+    function searchNodes(node) {
+        if (node.name.toLowerCase().startsWith(query)) {
+            results.push({ name: node.name, url: node.url });
+        }
+        if (node.children) {
+            node.children.forEach(searchNodes);
+        }
+    }
+    searchNodes(data); // data는 기존의 데이터 객체
+
+    // 검색 결과 표시
+    const resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = ""; // 이전 검색 결과 초기화
+    results.forEach(result => {
+        const link = document.createElement('a');
+        link.href = result.url || "#";
+        link.textContent = result.name;
+        link.style.cursor = "pointer";
+
+        // 링크 클릭 시 새 팝업 창 열기
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 기본 동작(기존 링크 열기) 방지
+            window.open(result.url, "_blank", "width=500,height=400"); // 팝업 창 열기
+        });
+
+        resultsDiv.appendChild(link);
+        resultsDiv.appendChild(document.createElement('br')); // 줄바꿈
+    });
+});
+
+
+    </script>
+
+</script>
+</body>
+</html>
